@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="http://prismlibrary.com"
+    prism:ViewModelLocator.AutowireViewModel="True"
+	xmlns:local="clr-namespace:XamXpoV2.Views;assembly=XamXpoV2"
+    x:Class="XamXpoV2.Views.MainPage"
+    Title="Main">
+
+
+    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+        <Label Text="Contacts" FontAttributes="Bold" HorizontalTextAlignment="Center" FontSize="Title" />
+        <SearchBar x:Name="SearchBar" Text="{Binding SearchText}" Placeholder="Search..." SearchCommand="{Binding SearchCommand}" SearchCommandParameter="{Binding Text, Source={x:Reference SearchBar}}" />
+        <Button Text="Add New Contact" Command="{Binding AddNewContactCommand}" />
+        <!--<Button Text="Nuevo" Command="{Binding NewObjectCommand}" BackgroundColor="#D07405" BorderColor ="Black" BorderWidth="1" FontAttributes="Bold" TextColor="#FFFFFF"></Button>-->
+        <ListView ItemsSource="{Binding Data}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Name}" Detail="{Binding Phone}">
+
+                    </TextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>
+
